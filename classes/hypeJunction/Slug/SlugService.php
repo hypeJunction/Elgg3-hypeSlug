@@ -6,7 +6,7 @@ use Elgg\Cache\CompositeCache;
 use ElggEntity;
 use Elgg\Database\QueryBuilder;
 
-class Post {
+class SlugService {
 
 	/**
 	 * @var CompositeCache
@@ -49,8 +49,8 @@ class Post {
 
 		$entity->setVolatileData('use_slug', false);
 
-		$cahe_key = sha1($slug);
-		$this->cache->save($cahe_key, $entity->getURL(), '+1 year');
+		$cache_key = sha1($slug);
+		$this->cache->save($cache_key, $entity->getURL(), '+1 year');
 	}
 
 	/**
@@ -111,5 +111,24 @@ class Post {
 	 */
 	public function flushCache() {
 		$this->cache->clear();
+	}
+
+	/**
+	 * Rebuild cache
+	 * @todo Add a different storage mechanism (e.g. a database table)
+	 * @return void
+	 */
+	public function rebuildCache() {
+
+		$entities = elgg_get_entities([
+			'metadata_names' => 'slug',
+			'limit' => 0,
+			'batch' => true,
+		]);
+
+		foreach ($entities as $entity) {
+			$cache_key = sha1($entity->slug);
+			$this->cache->save($cache_key, $entity->getURL(), '+1 year');
+		}
 	}
 }

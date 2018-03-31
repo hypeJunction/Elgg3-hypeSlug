@@ -7,6 +7,6 @@ return [
 			\DI\get('config'),
 			ELGG_CACHE_PERSISTENT | ELGG_CACHE_FILESYSTEM
 		),
-	'posts.slug' => \DI\object(\hypeJunction\Slug\Post::class)
+	'posts.slug' => \DI\object(\hypeJunction\Slug\SlugService::class)
 		->constructor(\DI\get('posts.slug.cache')),
 ];

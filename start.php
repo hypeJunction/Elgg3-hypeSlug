@@ -12,6 +12,7 @@ return function () {
 
 	elgg_register_plugin_hook_handler('cache:flush', 'system', function () {
 		elgg()->get('posts.slug')->flushCache();
+		elgg()->get('posts.slug')->rebuildCache();
 	});
 
 	elgg_register_event_handler('init', 'system', function () {
