@@ -89,7 +89,11 @@ class SlugService {
 		$handler = function () use ($slug, $entity) {
 			$count = elgg_get_entities([
 				'metadata_name_value_pairs' => [
-					'slug' => $slug,
+					[
+						'name' => 'slug',
+						'value' => $slug,
+						'case_sensitive' => false,
+					],
 				],
 				'wheres' => function (QueryBuilder $qb) use ($entity) {
 					return $qb->compare('e.guid', '!=', $entity->guid, ELGG_VALUE_INTEGER);

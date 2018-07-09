@@ -40,7 +40,11 @@ class RewriteSlugRoute {
 		if (!$url) {
 			$entities = elgg_get_entities([
 				'metadata_name_value_pairs' => [
-					'slug' => $slug,
+					[
+						'name' => 'slug',
+						'value' => $slug,
+						'case_sensitive' => false,
+					],
 				],
 				'limit' => 1,
 			]);
