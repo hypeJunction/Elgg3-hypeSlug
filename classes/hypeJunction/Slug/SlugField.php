@@ -39,6 +39,6 @@ class SlugField extends Field {
 		$slugs = elgg()->{'posts.slug'};
 		/* @var $slugs \hypeJunction\Slug\SlugService */
 
-		$entity = $slugs->getSlug($entity);
+		return $slugs->getSlug($entity);
 	}
 }

@@ -29,7 +29,6 @@ class SlugService {
 	 * @param null       $slug   Slug
 	 *
 	 * @return void
-	 * @throws \Exception
 	 */
 	public function setSlug(ElggEntity $entity, $slug = null) {
 		if (empty($slug)) {
@@ -84,7 +83,6 @@ class SlugService {
 	 * @param string     $slug   Slug
 	 *
 	 * @return bool
-	 * @throws \Exception
 	 */
 	public function isAvailableSlug(ElggEntity $entity, $slug) {
 		$flags = ELGG_IGNORE_ACCESS | ELGG_SHOW_DISABLED_ENTITIES;
