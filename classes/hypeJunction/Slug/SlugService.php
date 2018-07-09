@@ -131,6 +131,7 @@ class SlugService {
 
 			foreach ($entities as $entity) {
 				$cache_key = sha1($entity->slug);
+				$entity->setVolatileData('use_slug', false);
 				$this->cache->save($cache_key, $entity->getURL(), '+1 year');
 			}
 		});
