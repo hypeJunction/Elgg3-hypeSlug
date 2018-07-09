@@ -1,3 +1,13 @@
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/compare/1.1.2...1.1.3) (2018-07-09)
+
+
+### Bug Fixes
+
+* **cache:** store correct url value in cache ([f8d77cf](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/commit/f8d77cf))
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/compare/1.1.1...1.1.2) (2018-07-09)
 
