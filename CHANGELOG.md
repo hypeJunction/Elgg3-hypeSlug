@@ -1,3 +1,14 @@
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/compare/1.1.0...1.1.1) (2018-07-09)
+
+
+### Bug Fixes
+
+* **db:** make slug metadata searches case insensitive ([d5dba11](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/commit/d5dba11))
+* **fields:** correctly resolve slug field value ([f7cc40b](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/commit/f7cc40b))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/compare/1.0.0...1.1.0) (2018-06-29)
 

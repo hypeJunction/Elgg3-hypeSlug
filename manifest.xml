@@ -4,7 +4,7 @@
     <name>hypeSlug</name>
     <id>hypeSlug</id>
     <description>Implement support for routing slugs</description>
-   <version type="dist">1.1.0</version>
+   <version type="dist">1.1.1</version>
 
     <author>Ismayil Khayredinov (info@hypejunction.com)</author>
     <website>http://hypeJunction.com</website>
