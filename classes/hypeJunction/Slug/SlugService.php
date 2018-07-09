@@ -122,15 +122,17 @@ class SlugService {
 	 */
 	public function rebuildCache() {
 
-		$entities = elgg_get_entities([
-			'metadata_names' => 'slug',
-			'limit' => 0,
-			'batch' => true,
-		]);
+		elgg_call(ELGG_IGNORE_ACCESS | ELGG_SHOW_DISABLED_ENTITIES, function () {
+			$entities = elgg_get_entities([
+				'metadata_names' => 'slug',
+				'limit' => 0,
+				'batch' => true,
+			]);
 
-		foreach ($entities as $entity) {
-			$cache_key = sha1($entity->slug);
-			$this->cache->save($cache_key, $entity->getURL(), '+1 year');
-		}
+			foreach ($entities as $entity) {
+				$cache_key = sha1($entity->slug);
+				$this->cache->save($cache_key, $entity->getURL(), '+1 year');
+			}
+		});
 	}
 }
