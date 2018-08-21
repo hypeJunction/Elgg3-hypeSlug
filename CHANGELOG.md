@@ -1,3 +1,13 @@
+<a name="1.1.4"></a>
+## [1.1.4](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/compare/1.1.3...1.1.4) (2018-08-21)
+
+
+### Bug Fixes
+
+* **ux:** do not display slug on profile ([c0e5d2a](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/commit/c0e5d2a))
+
+
+
 <a name="1.1.3"></a>
 ## [1.1.3](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/compare/1.1.2...1.1.3) (2018-07-09)
 
