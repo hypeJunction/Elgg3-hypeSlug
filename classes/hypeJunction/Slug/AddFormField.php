@@ -19,7 +19,7 @@ class AddFormField {
 
 		$fields->add('slug', new SlugField([
 			'type' => 'text',
-			'is_profile_field' => true,
+			'is_profile_field' => false,
 			'is_admin_field' => true,
 			'section' => 'sidebar',
 			'priority' => 200,
