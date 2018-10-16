@@ -1,3 +1,13 @@
+<a name="1.1.4"></a>
+## [1.1.4](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/compare/1.1.3...1.1.4) (2018-10-16)
+
+
+### Bug Fixes
+
+* **cache:** implement some fail safe for when cache is not available ([c57d4e7](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/commit/c57d4e7))
+
+
+
 <a name="1.1.3"></a>
 ## [1.1.3](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/compare/1.1.2...1.1.3) (2018-07-09)
 
