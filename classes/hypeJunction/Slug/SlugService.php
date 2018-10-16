@@ -3,15 +3,24 @@
 namespace hypeJunction\Slug;
 
 use Elgg\Cache\CompositeCache;
+use Elgg\Di\ServiceFacade;
+use Elgg\Loggable;
 use ElggEntity;
 use Elgg\Database\QueryBuilder;
 
 class SlugService {
 
+	use Loggable;
+	use ServiceFacade;
+
 	/**
 	 * @var CompositeCache
 	 */
 	protected $cache;
+
+	public static function name() {
+		return 'posts.slug';
+	}
 
 	/**
 	 * Constructor
@@ -33,6 +42,7 @@ class SlugService {
 	public function setSlug(ElggEntity $entity, $slug = null) {
 		if (empty($slug)) {
 			unset($entity->slug);
+			unset($entity->slug_target);
 
 			return;
 		}
@@ -44,12 +54,13 @@ class SlugService {
 			$slug = $this->generateSlug($entity);
 		}
 
-		$entity->slug = $slug;
-
 		$entity->setVolatileData('use_slug', false);
 
+		$entity->slug = $slug;
+		$entity->slug_target = $entity->getURL();
+
 		$cache_key = sha1($slug);
-		$this->cache->save($cache_key, $entity->getURL(), '+1 year');
+		$this->cache->save($cache_key, $entity->slug_target, '+1 year');
 	}
 
 	/**
@@ -130,9 +141,14 @@ class SlugService {
 			]);
 
 			foreach ($entities as $entity) {
-				$cache_key = sha1($entity->slug);
 				$entity->setVolatileData('use_slug', false);
-				$this->cache->save($cache_key, $entity->getURL(), '+1 year');
+
+				if (!$entity->slug_target) {
+					$entity->slug_target = $entity->getURL();
+				}
+
+				$cache_key = sha1('/' . trim($entity->slug, '/'));
+				$this->cache->save($cache_key, $entity->slug_target, '+1 year');
 			}
 		});
 	}

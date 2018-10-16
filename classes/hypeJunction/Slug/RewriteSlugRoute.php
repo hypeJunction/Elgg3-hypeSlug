@@ -38,25 +38,28 @@ class RewriteSlugRoute {
 		$url = $cache->load($cache_key);
 
 		if (!$url) {
-			$entities = elgg_get_entities([
-				'metadata_name_value_pairs' => [
-					[
-						'name' => 'slug',
-						'value' => $slug,
-						'case_sensitive' => false,
+			$entities = elgg_call(ELGG_IGNORE_ACCESS, function() use ($slug) {
+				return elgg_get_entities([
+					'metadata_name_value_pairs' => [
+						[
+							'name' => 'slug',
+							'value' => [$slug, trim($slug, '/')],
+							'case_sensitive' => false,
+						],
+						[
+							'name' => 'slug_target',
+						],
 					],
-				],
-				'limit' => 1,
-			]);
+					'limit' => 1,
+				]);
+			});
 
 			if ($entities) {
 				$entity = array_shift($entities);
 				/* @var $entity \ElggEntity */
 
-				$entity->setVolatileData('use_slug', false);
-				$url = $entity->getURL();
 
-				$cache->save($cache_key, $url, '+1 year');
+				$url = $entity->slug_target;
 			}
 		}
 
