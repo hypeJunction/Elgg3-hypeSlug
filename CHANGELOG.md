@@ -1,10 +1,10 @@
 <a name="1.1.4"></a>
-## [1.1.4](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/compare/1.1.3...1.1.4) (2018-10-16)
+## [1.1.4](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/compare/1.1.3...1.1.4) (2018-08-21)
 
 
 ### Bug Fixes
 
-* **cache:** implement some fail safe for when cache is not available ([c57d4e7](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/commit/c57d4e7))
+* **ux:** do not display slug on profile ([c0e5d2a](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/commit/c0e5d2a))
 
 
 
