@@ -1,3 +1,13 @@
+<a name="1.1.6"></a>
+## [1.1.6](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/compare/1.1.5...1.1.6) (2019-07-08)
+
+
+### Bug Fixes
+
+* **slug:** do not query for slug_route as something is broken in Elgg ([b73daf1](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/commit/b73daf1))
+
+
+
 <a name="1.1.5"></a>
 ## [1.1.5](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/compare/1.1.4...1.1.5) (2018-10-16)
 
