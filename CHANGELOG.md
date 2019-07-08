@@ -1,3 +1,13 @@
+<a name="1.1.7"></a>
+## [1.1.7](https://github.com/hypeJunction/Elgg3-hypeSlug/compare/1.1.6...1.1.7) (2019-07-08)
+
+
+### Bug Fixes
+
+* **releases:** fix git package URL ([c03bad7](https://github.com/hypeJunction/Elgg3-hypeSlug/commit/c03bad7))
+
+
+
 <a name="1.1.6"></a>
 ## [1.1.6](https://github.com/hypeJunctionPro/Elgg3-hypeSlug/compare/1.1.5...1.1.6) (2019-07-08)
 
