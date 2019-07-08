@@ -46,9 +46,6 @@ class RewriteSlugRoute {
 							'value' => [$slug, trim($slug, '/')],
 							'case_sensitive' => false,
 						],
-						[
-							'name' => 'slug_target',
-						],
 					],
 					'limit' => 1,
 				]);
