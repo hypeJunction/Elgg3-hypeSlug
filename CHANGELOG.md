@@ -1,3 +1,21 @@
+<a name="2.0.0"></a>
+# 2.0.0 (2026-04-13)
+
+
+### Breaking Changes
+
+* **elgg:** require Elgg 4.0+ and PHP 7.4+
+* **bootstrap:** PluginBootstrap class removed; hooks/events now declared in elgg-plugin.php
+* **di:** \DI\object() → \DI\create(), namespaces moved to Elgg\Traits\*
+
+
+### Features
+
+* **4.x:** migrate to declarative elgg-plugin.php
+* **cache:** FlushCache class replaces Bootstrap cache-flush closure
+
+
+
 <a name="1.1.7"></a>
 ## [1.1.7](https://github.com/hypeJunction/Elgg3-hypeSlug/compare/1.1.6...1.1.7) (2019-07-08)
 
