@@ -3,10 +3,10 @@
 namespace hypeJunction\Slug;
 
 use Elgg\Cache\CompositeCache;
-use Elgg\Di\ServiceFacade;
-use Elgg\Loggable;
-use ElggEntity;
 use Elgg\Database\QueryBuilder;
+use Elgg\Traits\Di\ServiceFacade;
+use Elgg\Traits\Loggable;
+use ElggEntity;
 
 class SlugService {
 

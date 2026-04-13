@@ -10,7 +10,7 @@ class AddFormField {
 	 * @param \Elgg\Hook $hook Hook
 	 *
 	 * @return mixed
-	 * @throws \InvalidParameterException
+	 * @throws \Elgg\Exceptions\InvalidParameterException
 	 */
 	public function __invoke(\Elgg\Hook $hook) {
 
