@@ -5,12 +5,8 @@ return [
 		'name' => 'hypeSlug',
 		'version' => '1.1.7',
 	],
+	'bootstrap' => \hypeJunction\Slug\Bootstrap::class,
 	'hooks' => [
-		'route:rewrite' => [
-			'all' => [
-				\hypeJunction\Slug\RewriteSlugRoute::class => [],
-			],
-		],
 		'entity:url' => [
 			'object' => [
 				\hypeJunction\Slug\SetSlugRoute::class => [

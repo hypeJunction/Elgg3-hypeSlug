@@ -11,3 +11,7 @@ robots.txt
 composer.lock
 Gemfile.lock
 yarn.lock
+tests/playwright/node_modules/
+tests/playwright/test-results/
+tests/.phpunit.result.cache
+docker/.env
