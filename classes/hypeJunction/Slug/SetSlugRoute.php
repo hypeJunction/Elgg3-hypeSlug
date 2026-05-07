@@ -4,6 +4,9 @@ namespace hypeJunction\Slug;
 
 use Elgg\Hook;
 
+/**
+ * SetSlugRoute class.
+ */
 class SetSlugRoute {
 
 	/**

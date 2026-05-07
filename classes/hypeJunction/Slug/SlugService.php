@@ -8,6 +8,9 @@ use Elgg\Traits\Di\ServiceFacade;
 use Elgg\Traits\Loggable;
 use ElggEntity;
 
+/**
+ * SlugService class.
+ */
 class SlugService {
 
 	use Loggable;
@@ -18,6 +21,11 @@ class SlugService {
 	 */
 	protected $cache;
 
+	/**
+	 * Name.
+	 *
+	 * @return mixed
+	 */
 	public static function name() {
 		return 'posts.slug';
 	}

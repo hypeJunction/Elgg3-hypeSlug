@@ -2,6 +2,9 @@
 
 namespace hypeJunction\Slug;
 
+/**
+ * AddFormField class.
+ */
 class AddFormField {
 
 	/**

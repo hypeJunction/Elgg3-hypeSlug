@@ -6,8 +6,18 @@ use ElggEntity;
 use hypeJunction\Fields\Field;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
+/**
+ * SlugField class.
+ */
 class SlugField extends Field {
 
+	/**
+	 * Is visible.
+	 *
+	 * @param mixed $entity  Entity
+	 * @param mixed $context Context
+	 * @return mixed
+	 */
 	public function isVisible(ElggEntity $entity, $context = null) {
 
 		$params = [
@@ -28,6 +38,13 @@ class SlugField extends Field {
 		return parent::isVisible($entity, $context);
 	}
 
+	/**
+	 * Save.
+	 *
+	 * @param mixed $entity     Entity
+	 * @param mixed $parameters Parameters
+	 * @return mixed
+	 */
 	public function save(ElggEntity $entity, ParameterBag $parameters) {
 		$slugs = elgg()->{'posts.slug'};
 		/* @var $slugs \hypeJunction\Slug\SlugService */
@@ -35,6 +52,12 @@ class SlugField extends Field {
 		$slugs->setSlug($entity, $parameters->get($this->name));
 	}
 
+	/**
+	 * Retrieve.
+	 *
+	 * @param mixed $entity Entity
+	 * @return mixed
+	 */
 	public function retrieve(ElggEntity $entity) {
 		$slugs = elgg()->{'posts.slug'};
 		/* @var $slugs \hypeJunction\Slug\SlugService */

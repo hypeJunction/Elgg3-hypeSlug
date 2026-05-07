@@ -4,6 +4,9 @@ namespace hypeJunction\Slug;
 
 use Elgg\Event;
 
+/**
+ * FlushCache class.
+ */
 class FlushCache {
 
 	/**

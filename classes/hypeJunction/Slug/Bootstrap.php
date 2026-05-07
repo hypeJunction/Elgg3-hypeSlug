@@ -15,6 +15,11 @@ use Elgg\DefaultPluginBootstrap;
  */
 class Bootstrap extends DefaultPluginBootstrap {
 
+	/**
+	 * Boot.
+	 *
+	 * @return mixed
+	 */
 	public function boot(): void {
 		elgg_register_plugin_hook_handler('route:rewrite', 'all', RewriteSlugRoute::class);
 	}
