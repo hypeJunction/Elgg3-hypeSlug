@@ -1,15 +1,12 @@
 <?php
 /**
- * PHPUnit bootstrap for hypeslug plugin tests.
- * Plugin must be installed at {elgg_root}/mod/hypeslug/
+ * PHPUnit bootstrap for hypeslug integration tests.
  */
 
-// tests/ -> mod/hypeslug/ -> mod/ -> elgg_root/
-$elggRoot = dirname(dirname(dirname(__DIR__)));
+$elggRoot = '/var/www/html';
 
 require_once $elggRoot . '/vendor/autoload.php';
 
-// Load Elgg test classes (UnitTestCase, IntegrationTestCase, etc.)
 $testClassesDir = $elggRoot . '/vendor/elgg/elgg/engine/tests/classes';
 spl_autoload_register(function ($class) use ($testClassesDir) {
 	$file = $testClassesDir . '/' . str_replace('\\', '/', $class) . '.php';
@@ -18,4 +15,15 @@ spl_autoload_register(function ($class) use ($testClassesDir) {
 	}
 });
 
-\Elgg\Application::loadCore();
+$app = \Elgg\Application::getInstance();
+$app->bootCore();
+
+\Elgg\IntegrationTestCase::$_testing_app = $app;
+
+if (function_exists('_elgg_services')) {
+	_elgg_services()->plugins->generateEntities();
+	$plugin = elgg_get_plugin_from_id('hypeslug');
+	if ($plugin && !$plugin->isActive()) {
+		try { $plugin->activate(); } catch (\Throwable $e) {}
+	}
+}

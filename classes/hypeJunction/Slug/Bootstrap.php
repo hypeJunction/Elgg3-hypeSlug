@@ -21,6 +21,6 @@ class Bootstrap extends DefaultPluginBootstrap {
 	 * @return mixed
 	 */
 	public function boot(): void {
-		elgg_register_plugin_hook_handler('route:rewrite', 'all', RewriteSlugRoute::class);
+		elgg_register_event_handler('route:rewrite', 'all', RewriteSlugRoute::class);
 	}
 }

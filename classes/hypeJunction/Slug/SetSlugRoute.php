@@ -2,7 +2,7 @@
 
 namespace hypeJunction\Slug;
 
-use Elgg\Hook;
+use Elgg\Event;
 
 /**
  * SetSlugRoute class.
@@ -12,12 +12,12 @@ class SetSlugRoute {
 	/**
 	 * @elgg_plugin_hook entity:url object
 	 *
-	 * @param Hook $hook Hook
+	 * @param Event $event Hook
 	 *
 	 * @return string
 	 */
-	public function __invoke(Hook $hook) {
-		$entity = $hook->getEntityParam();
+	public function __invoke(Event $event) {
+		$entity = $event->getEntityParam();
 
 		if ($entity->getVolatileData('use_slug') === false) {
 			return null;

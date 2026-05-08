@@ -10,14 +10,14 @@ class AddFormField {
 	/**
 	 * Add slug field
 	 *
-	 * @param \Elgg\Hook $hook Hook
+	 * @param \Elgg\Event $event Hook
 	 *
 	 * @return mixed
 	 * @throws \Elgg\Exceptions\InvalidParameterException
 	 */
-	public function __invoke(\Elgg\Hook $hook) {
+	public function __invoke(\Elgg\Event $event) {
 
-		$fields = $hook->getValue();
+		$fields = $event->getValue();
 		/* @var $fields \hypeJunction\Fields\Collection */
 
 		$fields->add('slug', new SlugField([

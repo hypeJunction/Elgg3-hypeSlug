@@ -2,13 +2,11 @@
 
 namespace hypeJunction\Slug;
 
+use Elgg\Event;
 use Elgg\IntegrationTestCase;
 
 /**
- * Tests for SetSlugRoute: entity:url object hook handler.
- *
- * Verifies that entities with a slug get their URL overridden to the slug
- * path, and that the use_slug volatile-data escape hatch is respected.
+ * Tests for SetSlugRoute: entity:url object event handler.
  */
 class SetSlugRouteTest extends IntegrationTestCase {
 
@@ -32,18 +30,17 @@ class SetSlugRouteTest extends IntegrationTestCase {
 		$this->handler = null;
 	}
 
-	/**
-	 * Build a mock \Elgg\Hook for the entity:url hook.
-	 */
-	protected function makeHook(\ElggEntity $entity): \Elgg\Hook {
-		$hook = $this->getMockBuilder(\Elgg\Hook::class)->getMock();
-		$hook->method('getEntityParam')->willReturn($entity);
-		$hook->method('getName')->willReturn('entity:url');
-		$hook->method('getType')->willReturn('object');
-		$hook->method('getValue')->willReturn('');
-		$hook->method('getParam')->willReturnCallback(function ($key, $default = null) { return $default; });
-		$hook->method('getParams')->willReturn([]);
-		return $hook;
+	protected function makeHook(\ElggEntity $entity): Event {
+		$event = $this->getMockBuilder(Event::class)
+			->disableOriginalConstructor()
+			->getMock();
+		$event->method('getEntityParam')->willReturn($entity);
+		$event->method('getName')->willReturn('entity:url');
+		$event->method('getType')->willReturn('object');
+		$event->method('getValue')->willReturn('');
+		$event->method('getParam')->willReturnCallback(function ($key, $default = null) { return $default; });
+		$event->method('getParams')->willReturn([]);
+		return $event;
 	}
 
 	public function testReturnsNullWhenEntityHasNoSlug(): void {
@@ -58,18 +55,14 @@ class SetSlugRouteTest extends IntegrationTestCase {
 		$uniqueSlug = '/my-blog-post-' . $entity->guid;
 		$this->service->setSlug($entity, $uniqueSlug);
 
-		// setSlug sets use_slug=false as volatile data on the same object to
-		// prevent infinite URL loops.  Reload from DB to get a fresh instance
-		// with no volatile data, simulating what happens in a real request.
 		_elgg_services()->entityCache->delete($entity->guid);
-		$freshEntity = get_entity($entity->guid);
+		$freshEntity = get_entity((int) $entity->guid);
 
 		$hook = $this->makeHook($freshEntity);
 		$result = ($this->handler)($hook);
 
 		$this->assertNotNull($result);
 		$this->assertIsString($result);
-		// elgg_normalize_url returns absolute URL containing the slug path
 		$normalizedSlug = elgg_get_friendly_title(trim($uniqueSlug, '/'));
 		$this->assertStringContainsString($normalizedSlug, $result);
 	}
@@ -78,7 +71,6 @@ class SetSlugRouteTest extends IntegrationTestCase {
 		$entity = $this->createObject(['subtype' => 'test_slug_obj']);
 		$this->service->setSlug($entity, '/slug-disabled-' . $entity->guid);
 
-		// Simulate the escape hatch used internally by setSlug to avoid loops
 		$entity->setVolatileData('use_slug', false);
 
 		$hook = $this->makeHook($entity);
@@ -91,7 +83,7 @@ class SetSlugRouteTest extends IntegrationTestCase {
 		$this->service->setSlug($entity, '/absolute-check-' . $entity->guid);
 
 		_elgg_services()->entityCache->delete($entity->guid);
-		$freshEntity = get_entity($entity->guid);
+		$freshEntity = get_entity((int) $entity->guid);
 
 		$hook = $this->makeHook($freshEntity);
 		$result = ($this->handler)($hook);
@@ -100,21 +92,15 @@ class SetSlugRouteTest extends IntegrationTestCase {
 		$this->assertStringStartsWith('http', $result);
 	}
 
-	public function testHandlerIsRegisteredForEntityUrlHook(): void {
-		// Verify the hook is wired in elgg-plugin.php — if it were removed
-		// by a migration, triggering entity:url for an object with a slug
-		// would not return the slug URL.
+	public function testHandlerIsRegisteredForEntityUrlEvent(): void {
 		$entity = $this->createObject(['subtype' => 'test_slug_obj']);
 		$uniqueSlug = '/hook-wired-' . $entity->guid;
 		$this->service->setSlug($entity, $uniqueSlug);
 
-		// Reload to clear the use_slug=false volatile data set by setSlug.
 		_elgg_services()->entityCache->delete($entity->guid);
-		$freshEntity = get_entity($entity->guid);
+		$freshEntity = get_entity((int) $entity->guid);
 
 		$url = $freshEntity->getURL();
-		// If the handler is registered and fires, the URL contains the slug.
-		// If it's not registered, the URL is whatever the default is (empty or /view/guid).
 		$normalizedSlug = elgg_get_friendly_title(trim($uniqueSlug, '/'));
 		$this->assertStringContainsString($normalizedSlug, $url);
 	}

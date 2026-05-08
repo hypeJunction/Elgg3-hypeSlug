@@ -2,7 +2,7 @@
 
 namespace hypeJunction\Slug;
 
-use Elgg\Hook;
+use Elgg\Event;
 
 /**
  * RewriteSlugRoute class.
@@ -14,16 +14,16 @@ class RewriteSlugRoute {
 	 *
 	 * @elgg_plugin_hook route:rewrite all
 	 *
-	 * @param Hook $hook Hook
+	 * @param Event $event Hook
 	 *
 	 * @return mixed
 	 */
-	public function __invoke(Hook $hook) {
+	public function __invoke(Event $event) {
 
 		$cache = elgg()->{'posts.slug.cache'};
 		/* @var $cache \Elgg\Cache\CompositeCache */
 
-		$value = $hook->getValue();
+		$value = $event->getValue();
 
 		$identifier = elgg_extract('identifier', $value);
 		if (!$identifier) {

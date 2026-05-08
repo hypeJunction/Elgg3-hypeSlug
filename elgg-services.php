@@ -5,7 +5,7 @@ return [
 		->constructor(
 			'slugs',
 			\DI\get('config'),
-			ELGG_CACHE_PERSISTENT | ELGG_CACHE_FILESYSTEM
+			ELGG_CACHE_PERSISTENT | ELGG_CACHE_FILESYSTEM | ELGG_CACHE_RUNTIME
 		),
 	'posts.slug' => \DI\create(\hypeJunction\Slug\SlugService::class)
 		->constructor(\DI\get('posts.slug.cache')),
