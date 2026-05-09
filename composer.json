@@ -2,15 +2,14 @@
 	"name": "hypejunction/hypeslug",
 	"type": "elgg-plugin",
 	"description": "Slugs for Elgg posts",
-	"homepage": "http://hypejunction.com",
+	"homepage": "https://github.com/hypeJunction/hypeslug",
 	"keywords": [
 		"elgg", "plugin", "slug"
 	],
 	"license": "proprietary",
 	"authors": [
 		{
-			"name": "Ismayil Khayredinov",
-			"email": "info@hypejunction.com"
+			"name": "hypeJunction"
 		}
 	],
 	"extra": {
