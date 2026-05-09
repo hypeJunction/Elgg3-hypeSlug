@@ -89,3 +89,7 @@ PHP deps.
   as non-sensitive (hashes identify cache entries, not credentials).
 - No PHPUnit test suite. Validation is limited to activation + DI-binding
   smoke tests on the elgg4 Docker harness.
+
+## Seeding
+
+No seeder required. This plugin owns no entity types, subtypes, or persistent relationship schemas — it is a pure UI/utility/admin plugin with no persisted entity surface of its own.
