@@ -1,36 +1,38 @@
 {
-	"name": "hypejunction/hypeslug",
-	"type": "elgg-plugin",
-	"description": "Slugs for Elgg posts",
-	"homepage": "https://github.com/hypeJunction/hypeslug",
-	"keywords": [
-		"elgg", "plugin", "slug"
-	],
-	"license": "proprietary",
-	"authors": [
-		{
-			"name": "hypeJunction"
-		}
-	],
-	"extra": {
-		"installer-name": "hypeslug",
-		"elgg-plugin": {
-			"id": "hypeslug"
-		}
-	},
-	"require": {
-		"php": ">=7.4",
-		"elgg/elgg": "^4.0",
-		"composer/installers": "^2.0"
-	},
-	"config": {
-		"allow-plugins": {
-			"composer/installers": true
-		}
-	},
-	"autoload": {
-		"psr-0": {
-			"": "classes/"
-		}
-	}
+    "name": "hypejunction/hypeslug",
+    "type": "elgg-plugin",
+    "description": "Slugs for Elgg posts",
+    "homepage": "https://github.com/hypeJunction/hypeslug",
+    "keywords": [
+        "elgg",
+        "plugin",
+        "slug"
+    ],
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "hypeJunction"
+        }
+    ],
+    "extra": {
+        "installer-name": "hypeslug",
+        "elgg-plugin": {
+            "id": "hypeslug"
+        }
+    },
+    "require": {
+        "php": ">=7.4",
+        "elgg/elgg": "^4.0",
+        "composer/installers": "^2.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "autoload": {
+        "psr-0": {
+            "": "classes/"
+        }
+    }
 }
