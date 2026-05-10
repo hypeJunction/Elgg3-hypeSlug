@@ -2,7 +2,7 @@
     "name": "hypejunction/hypeslug",
     "type": "elgg-plugin",
     "description": "Slugs for Elgg posts",
-    "homepage": "https://github.com/hypeJunction/hypeslug",
+    "homepage": "https://github.com/hypeJunction/Elgg3-hypeSlug",
     "keywords": [
         "elgg",
         "plugin",
@@ -11,7 +11,8 @@
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "hypeJunction"
+            "name": "Ismayil Khayredinov",
+            "email": "ismayil.khayredinov@gmail.com"
         }
     ],
     "extra": {
@@ -35,5 +36,6 @@
         "psr-0": {
             "": "classes/"
         }
-    }
+    },
+    "version": "1.1.7"
 }
