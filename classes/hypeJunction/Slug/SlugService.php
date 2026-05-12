@@ -18,7 +18,10 @@ class SlugService {
 	 */
 	protected $cache;
 
-	public static function name() {
+	/**
+     * @return mixed
+     */
+    public static function name() {
 		return 'posts.slug';
 	}
 

@@ -8,7 +8,12 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 
 class SlugField extends Field {
 
-	public function isVisible(ElggEntity $entity, $context = null) {
+	/**
+     * @param ElggEntity $entity
+     * @param mixed $context
+     * @return mixed
+     */
+    public function isVisible(ElggEntity $entity, $context = null) {
 
 		$params = [
 			'entity' => $entity,
@@ -28,14 +33,22 @@ class SlugField extends Field {
 		return parent::isVisible($entity, $context);
 	}
 
-	public function save(ElggEntity $entity, ParameterBag $parameters) {
+	/**
+     * @param ElggEntity $entity
+     * @param ParameterBag $parameters
+     */
+    public function save(ElggEntity $entity, ParameterBag $parameters) {
 		$slugs = elgg()->{'posts.slug'};
 		/* @var $slugs \hypeJunction\Slug\SlugService */
 
 		$slugs->setSlug($entity, $parameters->get($this->name));
 	}
 
-	public function retrieve(ElggEntity $entity) {
+	/**
+     * @param ElggEntity $entity
+     * @return mixed
+     */
+    public function retrieve(ElggEntity $entity) {
 		$slugs = elgg()->{'posts.slug'};
 		/* @var $slugs \hypeJunction\Slug\SlugService */
 
